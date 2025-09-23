@@ -2,7 +2,7 @@ name: Auto Commit (*/5 test)
 
 on:
   schedule:
-    - cron: '* * * * *'  
+    - cron: '* * * * *'   # every minute UTC
   workflow_dispatch:
 
 permissions:
@@ -20,6 +20,11 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "Tien2003deptrai"
+          git config --global user.email "duongvantiendtu@gmail.com"
 
       - name: Who/when
         run: |
